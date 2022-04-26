@@ -3,7 +3,7 @@
 - name: Install docker server and initialize
   gather_facts: false
   hosts: localhost
-  
+  become: true
   tasks:
     - name: Docker install
       apk:
