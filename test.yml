@@ -1,14 +1,19 @@
 ---
 
-- name: Run the test playbook
+- name: Install docker server and initialize
   gather_facts: false
   hosts: localhost
+  
   tasks:
-    - name: Get the username running this playbook
-      become: false
-      local_action: command whoami
-      register: username_on_the_host
+    - name: Docker install
+      apk:
+        name: docker
+        state: present
+        local_action: command addgroup jenkins docker
+        local_action: command rc-update add docker boot
+        local_action: command service docker start
 
     - name: Display the User name
       ansible.builtin.debug:
         msg: "Hello Ansible User {{ username_on_the_host.stdout }} from Jenkins and Ansible!!"
+
