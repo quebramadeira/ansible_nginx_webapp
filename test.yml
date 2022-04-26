@@ -33,4 +33,4 @@
         - containerd.io    
         state: latest
     - name: Make docker is started up
-      service: name=docker state=restarted enabled=yes
+      service: name=docker state=started enabled=yes
