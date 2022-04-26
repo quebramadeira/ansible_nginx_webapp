@@ -2,7 +2,7 @@
 
 - name: Install docker server and initialize
   gather_facts: false
-  hosts: all
+  hosts: build_host
   become: true
   tasks:
     - name: Docker install
