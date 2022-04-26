@@ -2,20 +2,34 @@
 
 - name: Install docker server and initialize
   gather_facts: false
-  hosts: localhost
+  hosts: 192.168.10.2
   tasks:
     - name: Docker install
-      apk:
-        name: docker
-        state: present
-    - name: Add user to Docker group
-      local_action: command addgroup jenkins docker
-    - name: Add Docker service start at boot
-      local_action: command rc-update add docker boot
-    - name: Start Docker service
-      local_action: command service docker start
-
-    - name: Display the User name
-      ansible.builtin.debug:
-        msg: "Hello Ansible User {{ username_on_the_host.stdout }} from Jenkins and Ansible!!"
-
+      yum:
+        name:
+        - docker
+        - docker-client
+        - docker-client-latest
+        - docker-common
+        - docker-latest
+        - docker-latest-logrotate
+        - docker-logrotate
+        - docker-engine    
+        state: absent
+    - name: Add signing key
+      ansible.builtin.rpm_key:
+        key: "https://download.docker.com/linux/centos/gpg"
+        state: present    
+    - name: add docker repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+    - name: Install docker     
+      yum:
+        name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io    
+        state: latest
+    - name: Make docker is started up
+      service: name=docker state=restarted enabled=yes
