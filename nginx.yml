@@ -1,4 +1,4 @@
-- name: Install docker server and initialize
+- name: Install docker server, initialize and pull nginx
   gather_facts: false
   hosts: build_host
   become: true
