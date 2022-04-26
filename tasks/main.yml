@@ -1,1 +1,6 @@
-
+- name: Install docker, pull and run nginx
+  gather_facts: false
+  hosts: build_host
+  become: true
+  tasks:
+    - include: load_balancer.yml
