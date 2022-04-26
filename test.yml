@@ -3,13 +3,13 @@
 - name: Install docker server and initialize
   gather_facts: false
   hosts: localhost
-  become: true
   tasks:
     - name: Ensure that sudo is installed.
       apk:
         name: sudo
         state: present
     - name: Docker install
+      become: true
       apk:
         name: docker
         state: present
