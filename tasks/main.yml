@@ -2,7 +2,7 @@
   gather_facts: false
   hosts: build_host
   become: true
-  tasks:
+  handlers:
     name: Install docker, pull and run nginx and app containers
     - include: load_balancer.yml
     - include: webservers.yml
