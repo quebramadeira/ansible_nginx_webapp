@@ -5,10 +5,10 @@
   become: true
   tasks:
   - name: Pull nginx image
-        docker_container:
-          name: balancer
-          state: started
-          image: "docker pull quebramadeira/examapp"
-          pull: true
-          ports:
-          - "5000:5000" 
+    docker_container:
+      name: balancer
+      state: started
+      image: "docker pull quebramadeira/examapp"
+      pull: true
+      ports:
+      - "5000:5000" 
