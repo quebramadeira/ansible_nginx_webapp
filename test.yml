@@ -2,7 +2,7 @@
 
 - name: Install docker server and initialize
   gather_facts: false
-  hosts: build_host
+  hosts: all
   tasks:
     - name: Docker install
       yum:
