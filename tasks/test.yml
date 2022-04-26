@@ -1,1 +1,8 @@
-
+- name: Pull nginx image
+      docker_container:
+        name: balancer
+        state: started
+        image: "nginx:alpine"
+        pull: true
+        ports:
+          - "5000:5000" 
