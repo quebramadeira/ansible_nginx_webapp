@@ -1,6 +1,6 @@
 ---
 
-- name: Install docker server and initialize
+#- name: Install docker server and initialize
   gather_facts: false
   hosts: build_host
   become: true
