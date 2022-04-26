@@ -1,1 +1,4 @@
-
+---
+    - include: docker.yml
+    - name: Pull app image
+      docker_image: quebramadeira/examapp
