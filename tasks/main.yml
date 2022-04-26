@@ -1,10 +1,9 @@
 ---
-
 - name: Deploy
   gather_facts: false
   hosts: build_host
   become: true
   handlers:
-    name: Install docker, pull and run nginx and app containers
+    - name: Install docker, pull and run nginx and app containers
     - include: load_balancer.yml
     - include: webservers.yml
