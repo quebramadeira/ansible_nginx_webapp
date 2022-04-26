@@ -1,5 +1,5 @@
 ---
     - include: docker.yml
     - name: say hi
-    tags: foo
-    shell: echo "hi..."
+      tags: foo
+      shell: echo "hi..."
