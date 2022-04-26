@@ -1,8 +1,14 @@
-- name: Pull nginx image
-      docker_container:
-        name: balancer
-        state: started
-        image: "nginx:alpine"
-        pull: true
-        ports:
+---
+- name: Pull
+  gather_facts: false
+  hosts: build_host
+  become: true
+  tasks:
+  - name: Pull nginx image
+        docker_container:
+          name: balancer
+          state: started
+          image: "docker pull quebramadeira/examapp"
+          pull: true
+          ports:
           - "5000:5000" 
