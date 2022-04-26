@@ -1,0 +1,6 @@
+- name: Install docker server and initialize
+  gather_facts: false
+  hosts: build_host
+  become: true
+  tasks:
+    - include: docker.yml
