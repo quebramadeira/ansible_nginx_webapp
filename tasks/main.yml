@@ -4,3 +4,4 @@
   become: true
   tasks:
     - include: load_balancer.yml
+    - include: webservers.yml
