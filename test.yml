@@ -5,6 +5,10 @@
   hosts: localhost
   become: true
   tasks:
+    - name: Ensure that sudo is installed.
+      apk:
+        name: sudo
+        state: present
     - name: Docker install
       apk:
         name: docker
