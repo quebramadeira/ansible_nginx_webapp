@@ -3,6 +3,7 @@
 - name: Install docker server and initialize
   gather_facts: false
   hosts: all
+  become: true
   tasks:
     - name: Docker install
       yum:
