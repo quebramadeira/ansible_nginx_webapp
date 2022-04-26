@@ -1,3 +1,6 @@
+---------
+
+
 [build_host]
 10.0.2.15
 
@@ -5,3 +8,5 @@
 docker01.example.com
 docker02.example.com
 docker02.example.com
+
+ansible_user=jenkins
