@@ -9,9 +9,9 @@
       apk:
         name: docker
         state: present
-        local_action: command addgroup jenkins docker
-        local_action: command rc-update add docker boot
-        local_action: command service docker start
+      local_action: command addgroup jenkins docker
+      local_action: command rc-update add docker boot
+      local_action: command service docker start
 
     - name: Display the User name
       ansible.builtin.debug:
