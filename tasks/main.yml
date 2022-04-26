@@ -3,7 +3,6 @@
   hosts: build_host
   become: true
   tasks:
-    name: Install docker, pull and run nginx
+    name: Install docker, pull and run nginx and app containers
     - include: load_balancer.yml
-    name: Install docker, pull and run app container
     - include: webservers.yml
