@@ -1,7 +1,9 @@
-- name: Install docker, pull and run nginx
+- name: Deploy
   gather_facts: false
   hosts: build_host
   become: true
   tasks:
+    name: Install docker, pull and run nginx
     - include: load_balancer.yml
+    name: Install docker, pull and run app container
     - include: webservers.yml
