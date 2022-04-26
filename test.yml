@@ -9,8 +9,11 @@
       apk:
         name: docker
         state: present
+    - name: Add user to Docker group
       local_action: command addgroup jenkins docker
+    - name: Add Docker service start at boot
       local_action: command rc-update add docker boot
+    - name: Start Docker service
       local_action: command service docker start
 
     - name: Display the User name
