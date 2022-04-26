@@ -4,12 +4,7 @@
   gather_facts: false
   hosts: localhost
   tasks:
-    - name: Ensure that sudo is installed.
-      apk:
-        name: sudo
-        state: present
     - name: Docker install
-      become: true
       apk:
         name: docker
         state: present
