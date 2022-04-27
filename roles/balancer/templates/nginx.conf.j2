@@ -13,9 +13,9 @@ events {
 
 http {
   upstream myproject {
-    server webapp_1:5000;
+    server webapp_1:5000 weight=3;
     server webapp_2:5000;
-    server webapp_3:5000;
+    server webapp_3:5000 backup;
   }
 
   server {
