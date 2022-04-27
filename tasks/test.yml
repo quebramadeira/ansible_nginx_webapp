@@ -4,11 +4,27 @@
   hosts: build_host
   become: true
   tasks:
-  - name: Pull nginx image
+  - name: Run webapp_1
     docker_container:
       name: balancer
       state: started
       image: "quebramadeira/examapp"
       pull: true
       ports:
-      - "5000:5000" 
+      - "5000:5000"
+  - name: Run webapp_1
+    docker_container:
+      name: balancer
+      state: started
+      image: "quebramadeira/examapp"
+      pull: true
+      ports:
+      - "5001:5000" 
+  - name: Run webapp_1
+    docker_container:
+      name: balancer
+      state: started
+      image: "quebramadeira/examapp"
+      pull: true
+      ports:
+      - "5002:5000" 
