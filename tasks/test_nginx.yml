@@ -15,3 +15,18 @@
       pull: true
       ports:
       - "8081:80"
+  - name: Copy nginx configuration in place.
+    template:
+      src: "{{ nginx_conf_template }}"
+      dest: "{{ nginx_conf_file_path }}"
+      owner: root
+      group: "{{ root_group }}"
+      mode: 0644
+    notify:
+      - reload nginx
+
+  - name: Ensure nginx service is running as configured.
+    service:
+      name: nginx
+      state: "{{ nginx_service_state }}"
+      enabled: "{{ nginx_service_enabled }}"
