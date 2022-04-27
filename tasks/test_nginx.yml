@@ -1,12 +1,12 @@
 ---
-- name: Pull webapp image and run
+- name: Pull nginx image and run
   gather_facts: false
   hosts: build_host
   become: true
   tasks:
-  - name: Run webapp_1
+  - name: Run balancer
     docker_container:
-      name: webapp_1
+      name: balancer
       state: started
       image: "nginx:alpine"
       pull: true
