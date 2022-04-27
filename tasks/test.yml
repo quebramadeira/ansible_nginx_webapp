@@ -8,7 +8,7 @@
     docker_container:
       name: balancer
       state: started
-      image: "docker pull quebramadeira/examapp"
+      image: "quebramadeira/examapp"
       pull: true
       ports:
       - "5000:5000" 
