@@ -7,6 +7,8 @@
   - name: Run webapp_1
     docker_container:
       name: webapp_1
+      networks:
+      - name: "webapp"     
       state: started
       image: "quebramadeira/examapp"
       pull: true
@@ -15,6 +17,8 @@
   - name: Run webapp_2
     docker_container:
       name: webapp_2
+      networks:
+      - name: "webapp"     
       state: started
       image: "quebramadeira/examapp"
       pull: true
@@ -23,6 +27,8 @@
   - name: Run webapp_3
     docker_container:
       name: webapp_3
+      networks:
+      - name: "webapp"     
       state: started
       image: "quebramadeira/examapp"
       pull: true
