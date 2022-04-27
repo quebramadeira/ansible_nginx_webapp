@@ -6,23 +6,23 @@
   tasks:
   - name: Run webapp_1
     docker_container:
-      name: balancer
+      name: webapp_1
       state: started
       image: "quebramadeira/examapp"
       pull: true
       ports:
       - "5000:5000"
-  - name: Run webapp_1
+  - name: Run webapp_2
     docker_container:
-      name: balancer
+      name: webapp_2
       state: started
       image: "quebramadeira/examapp"
       pull: true
       ports:
       - "5001:5000" 
-  - name: Run webapp_1
+  - name: Run webapp_3
     docker_container:
-      name: balancer
+      name: webapp_3
       state: started
       image: "quebramadeira/examapp"
       pull: true
