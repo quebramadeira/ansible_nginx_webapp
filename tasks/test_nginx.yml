@@ -5,8 +5,8 @@
   become: true
   tasks:
   
-  - name: Include OS-specific variables.
-  include_vars: main.yml"
+  - name: Include variables.
+  include_vars: main.yml
   - name: Define nginx_user.
     set_fact:
       nginx_user: "{{ __nginx_user }}"
