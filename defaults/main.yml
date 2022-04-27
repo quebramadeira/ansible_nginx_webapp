@@ -2,3 +2,12 @@
 nginx_conf_template: "nginx.conf.j2"
 nginx_service_state: started
 nginx_service_enabled: true
+
+nginx_upstreams: []
+# - name: myapp1
+#   strategy: "ip_hash" # "least_conn", etc.
+#   keepalive: 16 # optional
+#   servers:
+#     - "srv1.example.com"
+#     - "srv2.example.com weight=3"
+#     - "srv3.example.com"
