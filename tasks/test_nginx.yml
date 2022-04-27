@@ -6,10 +6,10 @@
   tasks:
   
   - name: Include variables.
-    include_vars: "main.yml"
+    include_vars: "vars.yml"
   - name: Define nginx_user.
     set_fact:
-      nginx_user: "{{ __nginx_user }}"
+      nginx_user: "{{ nginx_user }}"
     when: nginx_user is not defined
     
   - name: Run balancer
