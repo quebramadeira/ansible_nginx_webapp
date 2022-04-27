@@ -9,6 +9,7 @@
       name: balancer
       networks:
       - name: "webapp"
+      volumes: /home/jenkins/nginx:/etc/nginx
       state: started
       image: "nginx:alpine"
       pull: true
