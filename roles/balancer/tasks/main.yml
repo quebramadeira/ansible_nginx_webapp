@@ -15,6 +15,7 @@
       volumes: /home/jenkins/nginx:/etc/nginx
       state: started
       restart: yes
+      recreate: yes
       image: "nginx:alpine"
       pull: true
       ports:
