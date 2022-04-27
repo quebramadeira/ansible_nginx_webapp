@@ -10,6 +10,7 @@
       networks:
       - name: "webapp"     
       state: started
+      recreate: yes
       image: "quebramadeira/examapp"
       pull: true
       ports:
@@ -20,6 +21,7 @@
       networks:
       - name: "webapp"     
       state: started
+      recreate: yes
       image: "quebramadeira/examapp"
       pull: true
       ports:
@@ -30,6 +32,7 @@
       networks:
       - name: "webapp"     
       state: started
+      recreate: yes
       image: "quebramadeira/examapp"
       pull: true
       ports:
