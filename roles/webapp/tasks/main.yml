@@ -1,9 +1,5 @@
 ---
-- name: Pull webapp image and run
-  gather_facts: false
-  hosts: build_host
-  become: true
-  tasks:
+
   - name: Run webapp_1
     docker_container:
       name: webapp_1
