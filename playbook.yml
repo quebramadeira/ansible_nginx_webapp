@@ -1,5 +1,6 @@
 - hosts: build_host
   become: yes
+  gather_facts: false
   roles:
    - balancer
   
