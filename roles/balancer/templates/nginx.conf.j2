@@ -15,7 +15,7 @@ http {
   upstream myproject {
     server webapp_1:5000 weight=3;
     server webapp_2:5001;
-    server webapp_3:5002;
+    server webapp_3:5002 backup;
   }
 
   server {
