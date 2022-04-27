@@ -26,11 +26,11 @@
       owner: root
       group: "{{ root_group }}"
       mode: 0644
-    notify:
-      - reload nginx
+ #   notify:
+ #     - reload nginx
 
-  - name: Ensure nginx service is running as configured.
-    service:
-      name: nginx
-      state: "{{ nginx_service_state }}"
-      enabled: "{{ nginx_service_enabled }}"
+ # - name: Ensure nginx service is running as configured.
+ #   service:
+ #     name: nginx
+ #     state: "{{ nginx_service_state }}"
+ #     enabled: "{{ nginx_service_enabled }}"
