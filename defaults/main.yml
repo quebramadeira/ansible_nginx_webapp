@@ -1,5 +1,5 @@
 ---
-nginx_conf_template: "nginx.conf.j2"
+nginx_conf_template: "../templates/nginx.conf.j2"
 nginx_service_state: started
 nginx_service_enabled: true
 
