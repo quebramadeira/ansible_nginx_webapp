@@ -4,6 +4,14 @@
   hosts: build_host
   become: true
   tasks:
+  
+  - name: Include OS-specific variables.
+  include_vars: main.yml"
+  - name: Define nginx_user.
+    set_fact:
+      nginx_user: "{{ __nginx_user }}"
+    when: nginx_user is not defined
+    
   - name: Run balancer
     docker_container:
       name: balancer
@@ -15,6 +23,7 @@
       pull: true
       ports:
       - "8081:80"
+      
   - name: Copy nginx configuration in place.
     template:
       src: "{{ nginx_conf_template }}"
