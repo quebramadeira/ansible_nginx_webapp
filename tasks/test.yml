@@ -1,5 +1,5 @@
 ---
-- name: Pull
+- name: Pull webapp image and run
   gather_facts: false
   hosts: build_host
   become: true
