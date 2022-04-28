@@ -1,5 +1,8 @@
 ---
-
+  - name: Install docker
+    include_role:
+      name: docker
+      
   - name: Run webapp_1
     docker_container:
       name: webapp_1
