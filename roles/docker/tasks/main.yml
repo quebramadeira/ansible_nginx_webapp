@@ -1,5 +1,15 @@
 ---
-    - name: Docker install
+   
+    - name: Python install 
+      yum:
+        name:
+        - dnf
+        state: present
+      dnf:
+        name:
+        - python3
+        state: present
+    - name: Docker clean
       yum:
         name:
         - docker
@@ -10,6 +20,11 @@
         - docker-latest-logrotate
         - docker-logrotate
         - docker-engine    
+        state: absent
+      pip3:
+        name:
+        - docker
+        - docker-py
         state: absent
     - name: Add signing key
       ansible.builtin.rpm_key:
@@ -26,5 +41,9 @@
         - docker-ce-cli
         - containerd.io    
         state: latest
+      pip3:
+        name:
+        - docker
+        state: present
     - name: Make docker is started up
       service: name=docker state=started enabled=yes
