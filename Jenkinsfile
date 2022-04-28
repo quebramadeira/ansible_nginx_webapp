@@ -35,10 +35,10 @@ pipeline {
     }
     post {
         always {
-            echo "finished deploying and testing"
+            echo "Finished deployment and testing"
         }
         failure {
-            echo "failure"
+            echo "Failure"
         }
     }
 }
