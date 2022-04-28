@@ -23,10 +23,11 @@
         - docker-engine    
         state: absent
     - name: Docker-py clean    
-      pip3:
+      pip:
         name:
         - docker
         - docker-py
+        executable: pip3
         state: absent
     - name: Add signing key
       ansible.builtin.rpm_key:
@@ -44,9 +45,10 @@
         - containerd.io    
         state: latest
     - name: Docker-py install       
-      pip3:
+      pip:
         name:
         - docker
+        executable: pip3
         state: present
     - name: Make docker is started up
       service: name=docker state=started enabled=yes
