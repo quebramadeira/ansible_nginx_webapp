@@ -60,7 +60,7 @@ http {
 {% endif %}
 {% for server in upstream.servers %}
         server {{ server }};
-        proxy_pass http://myapp1;
+        proxy_pass http://{{ upstream.name }};
 {% endfor %}
 {% if upstream.keepalive is defined %}
         keepalive {{ upstream.keepalive }};
