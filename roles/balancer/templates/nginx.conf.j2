@@ -1,4 +1,7 @@
+# {{ ansible_managed }}
+{% block user %}
 user  {{ nginx_user }};
+{% endblock %}
 
 error_log  {{ nginx_error_log }};
 pid        {{ nginx_pidfile }};
@@ -19,9 +22,9 @@ events {
 {% endblock %}
 
 http {
-    {% block http_begin %}{% endblock %}
+  {% block http_begin %}
 
-{% block http_basic %}
+  {% block http_basic %}
     server_names_hash_bucket_size {{ nginx_server_names_hash_bucket_size }};
 
     client_max_body_size {{ nginx_client_max_body_size }};
@@ -38,51 +41,51 @@ http {
     keepalive_requests {{ nginx_keepalive_requests }};
 
     server_tokens {{ nginx_server_tokens }};
-{% if nginx_proxy_cache_path %}
+  {% if nginx_proxy_cache_path %}
     proxy_cache_path {{ nginx_proxy_cache_path }};
-{% endif %}
-{% endblock %}
+  {% endif %}
+  {% endblock %}
 
-{% block http_gzip %}
+  {% block http_gzip %}
     # gzip on;
-{% endblock %}
+  {% endblock %}
 
-{% if nginx_extra_http_options %}
+  {% if nginx_extra_http_options %}
     {{ nginx_extra_http_options|indent(4, False) }}
-{% endif %}
+  {% endif %}
 
-{% block http_upstream %}
-{% for upstream in nginx_upstreams %}
+  {% block http_upstream %}
+  {% for upstream in nginx_upstreams %}
     upstream {{ upstream.name }} {
-{% if upstream.strategy is defined %}
+  {% if upstream.strategy is defined %}
         {{ upstream.strategy }};
-{% endif %}
-{% for server in upstream.servers %}
+  {% endif %}
+  {% for server in upstream.servers %}
         server {{ server }};    
-{% endfor %}
+  {% endfor %}
 
-{% if upstream.keepalive is defined %}
+  {% if upstream.keepalive is defined %}
         keepalive {{ upstream.keepalive }};
-{% endif %}
+  {% endif %}
     }
 
-{% endfor %}
-{% endblock %}
+  {% endfor %}
+  {% endblock %}
 
-{% block server %}
-{% for upstream in nginx_upstreams %}
-server {
+  {% block server %}
+  {% for upstream in nginx_upstreams %}
+  server {
     listen 80;
     location / {
       proxy_pass http://{{ upstream.name }};
+      }
     }
-   }
-{% endfor %}    
-{% endblock %}   
+  {% endfor %}    
+  {% endblock %}   
     
-{% block http_includes %}
+  {% block http_includes %}
     include {{ nginx_conf_path }}/*.conf;
-{% endblock %}
+  {% endblock %}
 
-    {% block http_end %}{% endblock %}
+{% endblock %}
 }
