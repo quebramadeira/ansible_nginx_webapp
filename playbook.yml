@@ -2,5 +2,5 @@
   become: yes
   gather_facts: false
   roles:
-#   - webapp
+   - webapp
    - balancer
