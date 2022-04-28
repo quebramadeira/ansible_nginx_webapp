@@ -1,8 +1,10 @@
 ---
-nginx_conf_template: "../templates/nginx.conf.j2"
+nginx_conf_template: "nginx.conf.j2"
+nginx_extra_conf_options: ""
 nginx_service_state: started
 nginx_service_enabled: true
 nginx_worker_processes: "4"
+nginx_multi_accept: "off"
 nginx_worker_connections: "1024"
 nginx_sendfile: "on"
 nginx_tcp_nopush: "on"
@@ -12,6 +14,9 @@ nginx_keepalive_timeout: "65"
 nginx_keepalive_requests: "100"
 
 nginx_server_tokens: "on"
+
+nginx_proxy_cache_path: ""
+nginx_extra_http_options: ""
 
 nginx_client_max_body_size: "64m"
 
@@ -25,11 +30,11 @@ nginx_log_format: |-
   '"$http_user_agent" "$http_x_forwarded_for"'
 
 nginx_upstreams:
-  - name: myapp1
+  - name: myapp
 #   strategy: "ip_hash" # "least_conn", etc.
 #   keepalive: 16 # optional
     servers:
       - "webapp_1:5000 weight=3"
-      - "webapp_2:5001"
-      - "webapp_3:5002"
+      - "webapp_2:5000"
+      - "webapp_3:5000 backup"
       
