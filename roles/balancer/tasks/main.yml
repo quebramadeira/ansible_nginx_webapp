@@ -1,5 +1,8 @@
 ---
-
+  - name: Install docker
+    include_role:
+      name: docker
+      
   - name: Include variables.
     include_vars: "main.yml"
     
