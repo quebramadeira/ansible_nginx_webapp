@@ -76,6 +76,7 @@ server {
     location / {
       proxy_pass http://{{ upstream.name }};
     }
+   }
 {% endfor %}    
 {% endblock %}   
     
