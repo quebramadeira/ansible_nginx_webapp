@@ -1,5 +1,28 @@
 ---
-   
+- name: Check if docker is installed
+  become: yes
+  become_method: sudo
+  command: which docker
+  register: docker_check
+
+- name: Install docker
+  become: yes
+  become_method: sudo
+  when: docker_check.rc != 0
+  yum:
+    name: docker-ce
+    state: present
+
+- name: Start docker service
+  become: yes
+  become_method: sudo
+  service:
+    name: docker
+    state: started
+    enabled: yes
+    
+# Rewrite  everything below without using dnf, instead use role to update python
+
     - name: Dnf install 
       yum:
         name:
