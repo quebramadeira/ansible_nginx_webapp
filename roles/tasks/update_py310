@@ -1,0 +1,46 @@
+---
+  - name: upgrade Py310
+    hosts: localhost
+    connection: local
+    become: yes
+    tasks:
+    - name: Install the epel-release repository
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install the necessary packages for building python3.8
+      yum:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+          - "@development tools"
+          - bzip2-devel
+          - expat-devel
+          - gdbm-devel
+          - ncurses-devel
+          - readline-devel
+          - sqlite-devel
+          - tk-devel
+          - zlib-devel
+          - openssl-devel
+
+    - name: Download and compile Python 3.10
+      shell: |
+        curl https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz -o Python-3.10.2.tgz
+        tar xvf Python-3.10.2.tgz
+        cd Python-3.10.2
+        ./configure --enable-optimizations
+        make -j 4
+        make altinstall
+
+    - name: Create a symbolic link for python3.10
+      file:
+        src: /usr/local/bin/python3.10
+        dest: /usr/bin/python3
+        state: link
+        force: yes
+
+    - name: Upgrade pip to the latest version
+      command: pip3 install --upgrade pip
